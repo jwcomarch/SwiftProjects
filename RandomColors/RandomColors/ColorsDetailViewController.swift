@@ -10,23 +10,28 @@ import UIKit
 class ColorsDetailViewController: UIViewController {
     
     var color: UIColor?
-    var alertMessage: String = ""
-    var alert = UIAlertController(title: "Color", message: "An error occurred.", preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = color ?? .systemBackground
-        alertMessage = hexStringFromColor(color: color ?? UIColor.white)
-        alert = UIAlertController(title: "Color", message: self.alertMessage, preferredStyle: .alert)
-        let closeAction = UIAlertAction(title: "Close", style: .default, handler: nil)
-        let backAction = UIAlertAction.init(title: "Back to Table", style: .default){_ in
-            self.navigationController?.popViewController(animated: true)            
-        }
-        alert.addAction(closeAction)
-        alert.addAction(backAction)
+        configureAlertController()
+    }
+    
+    func configureAlertController(){
+        
     }
     
     @IBAction func alertButtonTapped(_ sender: UIButton) {
+        let alertMessage = hexStringFromColor(color: color ?? UIColor.white)
+        let alert = UIAlertController(title: "Color", message: alertMessage, preferredStyle: .alert)
+        let closeAction = UIAlertAction(title: "Close", style: .default, handler: nil)
+        let backAction = UIAlertAction.init(title: "Back to Table", style: .default){_ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        alert.addAction(closeAction)
+        alert.addAction(backAction)
+        
         present(alert, animated: true)
     }
     
@@ -37,7 +42,6 @@ class ColorsDetailViewController: UIViewController {
         let b: CGFloat = components?[2] ?? 0.0
         
         let hexString = String.init(format: "#%02lX%02lX%02lX", lroundf(Float(r * 255)), lroundf(Float(g * 255)), lroundf(Float(b * 255)))
-        print(hexString)
         return hexString
     }
     
