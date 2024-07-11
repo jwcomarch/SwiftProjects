@@ -8,9 +8,7 @@
 import UIKit
 
 class ColorsDetailViewController: UIViewController {
-    
     var color: UIColor?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = color ?? .systemBackground
@@ -26,7 +24,7 @@ class ColorsDetailViewController: UIViewController {
         let alert = UIAlertController(title: "Color", message: alertMessage, preferredStyle: .alert)
         let closeAction = UIAlertAction(title: "Close", style: .default, handler: nil)
         let backAction = UIAlertAction.init(title: "Back to Table", style: .default){_ in
-            self.navigationController?.popViewController(animated: true)
+    self.navigationController?.popViewController(animated: true)
         }
         
         alert.addAction(closeAction)
