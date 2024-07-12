@@ -31,10 +31,10 @@ class ViewController: UIViewController {
         button2.layer.borderColor = UIColor.lightGray.cgColor
         button3.layer.borderColor = UIColor.lightGray.cgColor
         
-        askQuestion(action: nil)
+        askQuestion()
     }
     
-    func askQuestion(action: UIAlertAction!){
+    func askQuestion(action: UIAlertAction! = nil){
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
         button1.setImage(UIImage(named: countries[0]), for: .normal)
@@ -49,6 +49,7 @@ class ViewController: UIViewController {
     
     @IBAction func buttonTapped(_ sender: UIButton) {
         var title: String
+        var alertMessage: (String, String)
         answerCount += 1
         
         if sender.tag == correctAnswer {
@@ -62,19 +63,18 @@ class ViewController: UIViewController {
         }
         
         if answerCount < 10 {
-            let ac = UIAlertController(title: title, message: "Your score is \(score)", preferredStyle: .alert)
-            
-            ac.addAction(UIAlertAction(title:"Continue", style: .default, handler: askQuestion))
-            present(ac, animated: true)
+            alertMessage.0 = "Your score is \(score)"
+            alertMessage.1 = "Continue"
         } else {
-            let ac = UIAlertController(title: title, message: "Game finished! \n Your final score is \(score)", preferredStyle: .alert)
-            
-            ac.addAction(UIAlertAction(title:"Play again", style: .default, handler: askQuestion))
-            present(ac, animated: true)
-            
+            alertMessage.0 = "Game finished! \n Your final score is \(score)"
+            alertMessage.1 = "Play again"
             score = 0
             answerCount = 0
         }
+        
+        let ac = UIAlertController(title: title, message: alertMessage.0, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: alertMessage.1, style: .default, handler: askQuestion))
+        present(ac, animated: true)
     }
 }
 
