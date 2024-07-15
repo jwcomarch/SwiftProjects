@@ -49,7 +49,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="france"/>
                                 <connections>
-                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B6C-AR-wNm"/>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3hD-w0-EMd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -68,7 +68,7 @@
                     <connections>
                         <outlet property="button1" destination="HGQ-zZ-A2y" id="lh0-G5-eBN"/>
                         <outlet property="button2" destination="JbO-VY-N5D" id="J4H-gP-wej"/>
-                        <outlet property="button3" destination="JbO-VY-N5D" id="gSp-0E-J3G"/>
+                        <outlet property="button3" destination="aBU-PS-nSi" id="HVi-aD-pY1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
