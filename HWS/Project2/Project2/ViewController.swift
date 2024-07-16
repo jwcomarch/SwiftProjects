@@ -35,6 +35,7 @@ class ViewController: UIViewController {
         askQuestion()
     }
     
+<<<<<<< HEAD
     @objc func showPoints(){
         let title = "Your current score is \(score)."
         let message = "There is \(10 - answerCount) questions left."
@@ -44,6 +45,8 @@ class ViewController: UIViewController {
         present(ac, animated: true)
     }
     
+=======
+>>>>>>> main
     func askQuestion(action: UIAlertAction! = nil){
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
