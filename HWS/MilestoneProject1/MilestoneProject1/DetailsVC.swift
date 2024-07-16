@@ -31,5 +31,4 @@ class DetailsVC: UIViewController {
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         present(vc, animated: true)
     }
-    
 }

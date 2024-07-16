@@ -20,7 +20,7 @@ class ViewController: UITableViewController {
         let path = Bundle.main.resourcePath!
         let items = try! fm.contentsOfDirectory(atPath: path)
         
-        for i in items{
+        for i in items {
             if i.hasSuffix("@2x.png"){
                 flags.append(String(i.dropLast(7)))
             }
