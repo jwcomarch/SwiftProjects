@@ -40,18 +40,26 @@ class ViewController: UITableViewController {
         let ac = UIAlertController(title: "Filter results", message: nil, preferredStyle: .alert)
         ac.addTextField()
         
-        let submitAction = UIAlertAction(title: "Search", style: .default){
+        let submitAction = UIAlertAction(title: "Search", style: .default) {
             [weak self, weak ac] _ in
             guard let userInput = ac?.textFields?[0].text else { return }
             self?.submit(userInput)
         }
         
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {_ in
+            self.undoFilter()
+        }
+        
         ac.addAction(submitAction)
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        ac.addAction(cancelAction)
         present(ac, animated: true)
     }
     
     func submit(_ input: String) {
+        if input.isEmpty {
+            undoFilter()
+            return
+        }
         var tempArr = [Petition]()
         for p in petitions {
             if p.title.contains(input) || p.body.contains(input){
@@ -59,6 +67,11 @@ class ViewController: UITableViewController {
             }
         }
         petitions = tempArr
+        tableView.reloadData()
+    }
+    
+    func undoFilter(){
+        petitions = allPetitions
         tableView.reloadData()
     }
     
