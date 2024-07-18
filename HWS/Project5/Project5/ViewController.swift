@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UITableViewController {
-    var allWords = [String]()
+    var allWords = ["silkworm"]
     var usedWords = [String]()
 
     override func viewDidLoad() {
@@ -21,9 +21,6 @@ class ViewController: UITableViewController {
             if let startWord = try? String(contentsOf: startWordsURL){
                 allWords = startWord.components(separatedBy: "\n")
             }
-        }
-        if allWords.isEmpty {
-            allWords = ["silkworm"]
         }
         
         startGame()
@@ -89,9 +86,9 @@ class ViewController: UITableViewController {
             isNotTitle(word: word),
             isReal(word: word),]
         
-        for i in wordChecks.indices {
-            if !wordChecks[i] {
-                switch(i){
+        for (index, wordCheck) in wordChecks.enumerated() {
+            if !wordCheck {
+                switch(index){
                 case 0:
                     errorTitle = "Word too short"
                     errorMsg = "Word must be at least 3 letters long."
@@ -104,10 +101,9 @@ class ViewController: UITableViewController {
                 case 3:
                     errorTitle = "Word not allowed"
                     errorMsg = "Word inputted must not be the same as the title."
-                case 4:
+                default:
                     errorTitle = "Word not recognized"
                     errorMsg = "You can't input made up words!"
-                default: break
                 }
                 
                 let ac = UIAlertController(title: errorTitle, message: errorMsg, preferredStyle: .alert)
