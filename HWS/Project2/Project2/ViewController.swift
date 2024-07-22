@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     var correctAnswer = 0
     var answerCount = 0
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
@@ -76,7 +78,12 @@ class ViewController: UIViewController {
             alertMessage.0 = "Your score is \(score)"
             alertMessage.1 = "Continue"
         } else {
-            alertMessage.0 = "Game finished! \n Your final score is \(score)"
+            let topScoreMsg: String
+            if score > defaults.integer(forKey: "TopScore") {
+                topScoreMsg = ". This is the new high score!"
+                defaults.set(score, forKey: "TopScore")
+            } else { topScoreMsg = "" }
+            alertMessage.0 = "Game finished! \n Your final score is \(score)" + topScoreMsg
             alertMessage.1 = "Play again"
             score = 0
             answerCount = 0

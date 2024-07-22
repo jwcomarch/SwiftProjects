@@ -10,6 +10,8 @@ import UIKit
 class ViewController: UITableViewController {
     var allWords = ["silkworm"]
     var usedWords = [String]()
+    
+    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +19,7 @@ class ViewController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(restartGame))
         
-        if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt"){
+        if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
             if let startWord = try? String(contentsOf: startWordsURL){
                 allWords = startWord.components(separatedBy: "\n")
             }
@@ -26,14 +28,22 @@ class ViewController: UITableViewController {
         startGame()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        print("viewWillDisappear")
+        defaults.set(usedWords, forKey: "UsedWords")
+        defaults.set(title, forKey: "Title")
+    }
+    
     func startGame() {
-        title = allWords.randomElement()
-        usedWords.removeAll(keepingCapacity: true)
+        title = defaults.object(forKey: "Title") as? String ?? allWords.randomElement()
+        usedWords = defaults.object(forKey: "UsedWords") as? [String] ?? [String]()
         tableView.reloadData()
     }
     
     @objc func restartGame() {
-        startGame()
+        title = allWords.randomElement()
+        usedWords.removeAll(keepingCapacity: true)
+        tableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,11 +57,11 @@ class ViewController: UITableViewController {
         return cell
     }
     
-    @objc func promptForAnswer(){
+    @objc func promptForAnswer() {
         let ac = UIAlertController(title: "Enter answer", message: nil, preferredStyle: .alert)
         ac.addTextField()
         
-        let submitAction = UIAlertAction(title: "Submit", style: .default){
+        let submitAction = UIAlertAction(title: "Submit", style: .default) {
             [weak self, weak ac] _ in
             guard let answer = ac?.textFields?[0].text else { return }
             self?.submit(answer)
@@ -74,7 +84,7 @@ class ViewController: UITableViewController {
         }
     }
     
-    func isWordAcceptable(word: String) -> Bool{
+    func isWordAcceptable(word: String) -> Bool {
         var errorTitle = "Error"
         var errorMsg = "Unexpected error occurred. Please contact app developer."
         guard let title = title else { return false }
@@ -88,7 +98,7 @@ class ViewController: UITableViewController {
         
         for (index, wordCheck) in wordChecks.enumerated() {
             if !wordCheck {
-                switch(index){
+                switch(index) {
                 case 0:
                     errorTitle = "Word too short"
                     errorMsg = "Word must be at least 3 letters long."
