@@ -46,7 +46,7 @@ class ViewController: UITableViewController {
             self?.submit(userInput)
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {_ in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.undoFilter()
         }
         
@@ -61,16 +61,16 @@ class ViewController: UITableViewController {
             return
         }
         var tempArr = [Petition]()
-        for p in petitions {
-            if p.title.contains(input) || p.body.contains(input){
-                tempArr.append(p)
+        for petition in petitions {
+            if petition.title.contains(input) || petition.body.contains(input) {
+                tempArr.append(petition)
             }
         }
         petitions = tempArr
         tableView.reloadData()
     }
     
-    func undoFilter(){
+    func undoFilter() {
         petitions = allPetitions
         tableView.reloadData()
     }
