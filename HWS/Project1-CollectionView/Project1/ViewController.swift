@@ -21,9 +21,9 @@ class ViewController: UICollectionViewController {
         let path = Bundle.main.resourcePath!
         let items = try! fm.contentsOfDirectory(atPath: path).sorted()
         
-        for i in items {
-            if i.hasPrefix("nssl"){
-                pictures.append(i)
+        for item in items {
+            if item.hasPrefix("nssl"){
+                pictures.append(item)
             }
         }
     }
@@ -41,8 +41,8 @@ class ViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-            vc.titleBar = "Picture \(indexPath.row + 1) of \(pictures.count)"
-            vc.selectedImage = pictures[indexPath.row]
+            vc.titleBar = "Picture \(indexPath.item + 1) of \(pictures.count)"
+            vc.selectedImage = pictures[indexPath.item]
             navigationController?.pushViewController(vc, animated: true)
         }
     }
