@@ -41,13 +41,13 @@ class ViewController: UITableViewController {
         ac.addTextField()
         
         let submitAction = UIAlertAction(title: "Search", style: .default) {
-            [self, weak ac] _ in
+            [weak self, weak ac] _ in
             guard let userInput = ac?.textFields?[0].text else { return }
-            performSelector(inBackground: #selector(submit), with: userInput)
-            //self?.submit(userInput)
+            self?.submit(userInput)
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {_ in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+
             self.undoFilter()
         }
         
@@ -61,20 +61,17 @@ class ViewController: UITableViewController {
             undoFilter()
             return
         }
-        var tempArr = [Petition]()
-        for p in petitions {
-            if p.title.contains(input) || p.body.contains(input){
-                tempArr.append(p)
+        var tempPetitions = [Petition]()
+        for petition in petitions {
+            if petition.title.contains(input) || petition.body.contains(input) {
+                tempPetitions.append(petition)
             }
         }
-        petitions = tempArr
-        
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        petitions = tempPetitions
+        tableView.reloadData()
     }
     
-    func undoFilter(){
+    func undoFilter() {
         petitions = allPetitions
         tableView.reloadData()
     }
