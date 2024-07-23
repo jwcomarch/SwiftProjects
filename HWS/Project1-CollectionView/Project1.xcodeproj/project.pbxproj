@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		175CB8192C4A424B004843D0 /* PictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175CB8182C4A424B004843D0 /* PictureCell.swift */; };
 		17CE45202C3FC60E00B1652F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CE451F2C3FC60E00B1652F /* AppDelegate.swift */; };
 		17CE45222C3FC60E00B1652F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CE45212C3FC60E00B1652F /* SceneDelegate.swift */; };
 		17CE45242C3FC60E00B1652F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CE45232C3FC60E00B1652F /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		175CB8182C4A424B004843D0 /* PictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCell.swift; sourceTree = "<group>"; };
 		17CE451C2C3FC60E00B1652F /* Project1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17CE451F2C3FC60E00B1652F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17CE45212C3FC60E00B1652F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				17CE45212C3FC60E00B1652F /* SceneDelegate.swift */,
 				17CE45232C3FC60E00B1652F /* ViewController.swift */,
 				17CE456D2C3FD57700B1652F /* DetailViewController.swift */,
+				175CB8182C4A424B004843D0 /* PictureCell.swift */,
 				17CE45252C3FC60E00B1652F /* Main.storyboard */,
 				17CE45282C3FC60F00B1652F /* Assets.xcassets */,
 				17CE452A2C3FC60F00B1652F /* LaunchScreen.storyboard */,
@@ -191,6 +194,7 @@
 			files = (
 				17CE45242C3FC60E00B1652F /* ViewController.swift in Sources */,
 				17CE45202C3FC60E00B1652F /* AppDelegate.swift in Sources */,
+				175CB8192C4A424B004843D0 /* PictureCell.swift in Sources */,
 				17CE45222C3FC60E00B1652F /* SceneDelegate.swift in Sources */,
 				17CE456E2C3FD57700B1652F /* DetailViewController.swift in Sources */,
 			);
