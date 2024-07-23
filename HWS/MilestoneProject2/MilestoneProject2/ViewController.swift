@@ -30,9 +30,12 @@ class ViewController: UITableViewController {
         ac.addTextField()
         let submitAction = UIAlertAction(title: "OK", style: .default) { [weak self, weak ac] _ in
             guard let input = ac?.textFields?[0].text else { return }
-            self?.submit(input)
+            if !input.isEmpty {
+                self?.submit(input)
+            }
         }
         ac.addAction(submitAction)
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
     }
     
@@ -102,5 +105,6 @@ class ViewController: UITableViewController {
         itemList.remove(at: sender.tag)
         let indexPath = [IndexPath(row: sender.tag, section: 0)]
         tableView.deleteRows(at: indexPath, with: .automatic)
+        tableView.reloadData()
     }
 }
