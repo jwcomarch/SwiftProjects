@@ -60,13 +60,13 @@ class ViewController: UITableViewController {
             undoFilter()
             return
         }
-        var tempArr = [Petition]()
+        var tempPetitions = [Petition]()
         for petition in petitions {
             if petition.title.contains(input) || petition.body.contains(input) {
-                tempArr.append(petition)
+                tempPetitions.append(petition)
             }
         }
-        petitions = tempArr
+        petitions = tempPetitions
         tableView.reloadData()
     }
     
