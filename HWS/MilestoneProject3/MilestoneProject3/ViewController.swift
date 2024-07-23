@@ -45,31 +45,33 @@ class ViewController: UIViewController {
         buttonsView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(buttonsView)
         
-        let width = 40
-        let height = 40
+        let width = 45
+        let height = 45
         
         for row in 0..<5 {
             for column in 0..<6 {
-                let letterButton = UIButton(type: .system)
-                letterButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
-                letterButton.setTitle("W", for: .normal)
-                letterButton.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
-                letterButton.layer.borderWidth = 1
-                letterButton.layer.borderColor = UIColor.lightGray.cgColor
-                
-                let frame = CGRect(x: column * width, y: row * height, width: width - 5, height: height - 5)
-                letterButton.frame = frame
-                
-                buttonsView.addSubview(letterButton)
-                letterButtons.append(letterButton)
+                if row == 4 && column > 1 { continue } else {
+                    let letterButton = UIButton(type: .system)
+                    letterButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+                    letterButton.setTitle("W", for: .normal)
+                    letterButton.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
+                    letterButton.layer.borderWidth = 1
+                    letterButton.layer.borderColor = UIColor.lightGray.cgColor
+                    
+                    let frame = CGRect(x: column * width, y: row * height, width: width - 5, height: height - 5)
+                    letterButton.frame = frame
+                    
+                    buttonsView.addSubview(letterButton)
+                    letterButtons.append(letterButton)
+                }
             }
         }
         
         configureUI()
         
         NSLayoutConstraint.activate([
-            buttonsView.widthAnchor.constraint(equalToConstant: 240),
-            buttonsView.heightAnchor.constraint(equalToConstant: 200),
+            buttonsView.widthAnchor.constraint(equalToConstant: 270),
+            buttonsView.heightAnchor.constraint(equalToConstant: 225),
             buttonsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -10),
             
@@ -111,6 +113,7 @@ class ViewController: UIViewController {
     
     @objc func restartGame() {
         wordToGuess = wordList.randomElement()!
+        print("New word: \(wordToGuess)")
         guessedLetters = ""
         updateWord()
         livesLost = 0
@@ -139,15 +142,14 @@ class ViewController: UIViewController {
         let letterPositions = wordToGuess.enumerated().compactMap { $1 == Character(buttonTitle) ? $0 : nil }
         
         if letterPositions.isEmpty {
-            sender.backgroundColor = .systemRed
+            sender.backgroundColor = .lightGray
             sender.isUserInteractionEnabled = false
             livesLost += 1
             updateLives()
         } else {
-            sender.backgroundColor = .systemBlue
+            sender.backgroundColor = .systemGreen
             sender.isUserInteractionEnabled = false
             guessedLetters.append(buttonTitle)
-            
             updateWord()
         }
     }
