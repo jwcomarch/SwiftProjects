@@ -47,6 +47,7 @@ class ViewController: UITableViewController {
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+
             self.undoFilter()
         }
         
@@ -55,7 +56,7 @@ class ViewController: UITableViewController {
         present(ac, animated: true)
     }
     
-    func submit(_ input: String) {
+    @objc func submit(_ input: String) {
         if input.isEmpty {
             undoFilter()
             return
