@@ -101,25 +101,24 @@ class ViewController: UIViewController {
             }
         }
         updateLives()
-        
         wordToGuess = wordList.randomElement()!
-        print("Word: \(wordToGuess)")
         updateWord()
         
-        for index in 0..<26 {
+        for index in letterButtons.indices {
             letterButtons[index].setTitle(String(alphabet[index]), for: .normal)
         }
     }
     
     @objc func restartGame() {
         wordToGuess = wordList.randomElement()!
-        print("New word: \(wordToGuess)")
         guessedLetters = ""
         updateWord()
         livesLost = 0
         updateLives()
         for index in 0..<26 {
             letterButtons[index].setTitle(String(alphabet[index]), for: .normal)
+            letterButtons[index].isUserInteractionEnabled = true
+            letterButtons[index].backgroundColor = .systemBackground
         }
     }
     
@@ -134,6 +133,28 @@ class ViewController: UIViewController {
         }
         wordHidden = String(hiddenWord.dropLast())
         wordLabel.text = wordHidden
+        if (wordHidden.filter { !$0.isWhitespace } == wordToGuess) {
+            gameFinished()
+        }
+    }
+    
+    func gameFinished() {
+        let message: String
+        
+        if livesLost > 6 {
+            message = "You lost!"
+        } else {
+            message = "You won!"
+        }
+        
+        let ac = UIAlertController(title: "Game Finished!", message: message, preferredStyle: .alert)
+
+        let restartAction = UIAlertAction(title: "Play again", style: .default) {
+            [weak self] _ in
+            self?.restartGame()
+        }
+        ac.addAction(restartAction)
+        present(ac, animated: true)
     }
     
     @objc func letterTapped(_ sender: UIButton) {
@@ -167,5 +188,9 @@ class ViewController: UIViewController {
         }
         
         livesLabel.attributedText = livesLeftText
+        
+        if (livesLost == 7) {
+            gameFinished()
+        }
     }
 }
