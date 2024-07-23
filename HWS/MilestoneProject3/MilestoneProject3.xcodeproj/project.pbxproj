@@ -13,7 +13,7 @@
 		175F5BB62C4E5D1200AE5F66 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 175F5BB52C4E5D1200AE5F66 /* Base */; };
 		175F5BB82C4E5D1200AE5F66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 175F5BB72C4E5D1200AE5F66 /* Assets.xcassets */; };
 		175F5BBB2C4E5D1200AE5F66 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 175F5BBA2C4E5D1200AE5F66 /* Base */; };
-		175F5BC32C4E720100AE5F66 /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = 175F5BC22C4E720100AE5F66 /* start.txt */; };
+		178051C32C4FA7460082C3B4 /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = 178051C22C4FA7460082C3B4 /* words.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		175F5BB72C4E5D1200AE5F66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		175F5BBA2C4E5D1200AE5F66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		175F5BBC2C4E5D1200AE5F66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		175F5BC22C4E720100AE5F66 /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = start.txt; path = ../../Project5/Project5/start.txt; sourceTree = "<group>"; };
+		178051C22C4FA7460082C3B4 /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,7 @@
 				175F5BB72C4E5D1200AE5F66 /* Assets.xcassets */,
 				175F5BB92C4E5D1200AE5F66 /* LaunchScreen.storyboard */,
 				175F5BBC2C4E5D1200AE5F66 /* Info.plist */,
-				175F5BC22C4E720100AE5F66 /* start.txt */,
+				178051C22C4FA7460082C3B4 /* words.txt */,
 			);
 			path = MilestoneProject3;
 			sourceTree = "<group>";
@@ -129,8 +129,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				175F5BB82C4E5D1200AE5F66 /* Assets.xcassets in Resources */,
-				175F5BC32C4E720100AE5F66 /* start.txt in Resources */,
 				175F5BBB2C4E5D1200AE5F66 /* Base in Resources */,
+				178051C32C4FA7460082C3B4 /* words.txt in Resources */,
 				175F5BB62C4E5D1200AE5F66 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

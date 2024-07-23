@@ -94,9 +94,9 @@ class ViewController: UIViewController {
     }
     
     func configureUI() {
-        if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt"){
-            if let startWord = try? String(contentsOf: startWordsURL){
-                wordList = startWord.components(separatedBy: "\n")
+        if let wordsURL = Bundle.main.url(forResource: "words", withExtension: "txt"){
+            if let word = try? String(contentsOf: wordsURL){
+                wordList = word.components(separatedBy: "\n")
                 wordList = wordList.map { $0.uppercased() }
             }
         }
