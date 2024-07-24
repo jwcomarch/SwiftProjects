@@ -19,8 +19,15 @@ class ViewController: UIViewController {
     var wordToGuess = ""
     var wordHidden = ""
     var guessedLetters = ""
-    var livesLeftText = NSMutableAttributedString()
-    var livesLost = 0
+    var allHearts = [NSTextAttachment]()
+    var livesLost = 0 {
+        didSet {
+            for index in stride(from: allHearts.count - 1, to: 6 - livesLost, by: -1) {
+                allHearts[index] = emptyHeart
+            }
+            print("Hearts: \(allHearts)")
+        }
+    }
     
     var filledHeart = NSTextAttachment(image: UIImage(systemName: "heart.fill")!)
     var emptyHeart = NSTextAttachment(image: UIImage(systemName: "heart")!)
@@ -41,12 +48,25 @@ class ViewController: UIViewController {
         wordLabel.textAlignment = .center
         view.addSubview(wordLabel)
         
+        addLetterButtons(width: 45, height: 45)
+        configureUI()
+        
+        NSLayoutConstraint.activate([
+            livesLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 10),
+            livesLabel.heightAnchor.constraint(equalToConstant: 50),
+            livesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            livesLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
+
+            wordLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            wordLabel.topAnchor.constraint(equalTo: livesLabel.bottomAnchor, constant: 10),
+            wordLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
+        ])
+    }
+    
+    func addLetterButtons(width: Int, height: Int) {
         let buttonsView = UIView()
         buttonsView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(buttonsView)
-        
-        let width = 45
-        let height = 45
         
         for row in 0..<5 {
             for column in 0..<6 {
@@ -66,23 +86,11 @@ class ViewController: UIViewController {
                 }
             }
         }
-        
-        configureUI()
-        
         NSLayoutConstraint.activate([
             buttonsView.widthAnchor.constraint(equalToConstant: 270),
             buttonsView.heightAnchor.constraint(equalToConstant: 225),
             buttonsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -10),
-            
-            livesLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 10),
-            livesLabel.heightAnchor.constraint(equalToConstant: 50),
-            livesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            livesLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
-
-            wordLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            wordLabel.topAnchor.constraint(equalTo: livesLabel.bottomAnchor, constant: 10),
-            wordLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
+            buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -10)
         ])
     }
     
@@ -90,7 +98,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(restartGame))
-        
     }
     
     func configureUI() {
@@ -100,6 +107,7 @@ class ViewController: UIViewController {
                 wordList = wordList.map { $0.uppercased() }
             }
         }
+        fillHearts()
         updateLives()
         wordToGuess = wordList.randomElement()!
         updateWord()
@@ -114,6 +122,7 @@ class ViewController: UIViewController {
         guessedLetters = ""
         updateWord()
         livesLost = 0
+        fillHearts()
         updateLives()
         for index in 0..<26 {
             letterButtons[index].setTitle(String(alphabet[index]), for: .normal)
@@ -142,7 +151,7 @@ class ViewController: UIViewController {
         let message: String
         
         if livesLost > 6 {
-            message = "You lost!"
+            message = "You lost! The word was \(wordToGuess)."
         } else {
             message = "You won!"
         }
@@ -160,9 +169,7 @@ class ViewController: UIViewController {
     @objc func letterTapped(_ sender: UIButton) {
         guard let buttonTitle = sender.titleLabel?.text else { return }
         
-        let letterPositions = wordToGuess.enumerated().compactMap { $1 == Character(buttonTitle) ? $0 : nil }
-        
-        if letterPositions.isEmpty {
+        if !wordToGuess.contains(buttonTitle) {
             sender.backgroundColor = .lightGray
             sender.isUserInteractionEnabled = false
             livesLost += 1
@@ -175,21 +182,23 @@ class ViewController: UIViewController {
         }
     }
     
+    func fillHearts() {
+        allHearts.removeAll()
+        for _ in 0 ..< 7 {
+            allHearts.append(filledHeart)
+        }
+    }
+    
     func updateLives() {
-        livesLeftText = NSMutableAttributedString(string: "Lives left: ")
-        for _ in 0 ..< 7 - livesLost {
-            livesLeftText.append(NSAttributedString(attachment: filledHeart))
+        let livesLeftText = NSMutableAttributedString(string: "Lives left: ")
+        
+        for index in 0 ..< 7 {
+            livesLeftText.append(NSMutableAttributedString(attachment: allHearts[index]))
             livesLeftText.append(NSAttributedString(string: " "))
         }
-        
-        for _ in 0 ..< livesLost {
-            livesLeftText.append(NSAttributedString(attachment: emptyHeart))
-            livesLeftText.append(NSAttributedString(string: " "))
-        }
-        
         livesLabel.attributedText = livesLeftText
         
-        if (livesLost == 7) {
+        if livesLost == 7 {
             gameFinished()
         }
     }
