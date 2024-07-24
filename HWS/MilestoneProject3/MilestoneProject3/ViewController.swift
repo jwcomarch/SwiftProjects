@@ -25,7 +25,6 @@ class ViewController: UIViewController {
             for index in stride(from: allHearts.count - 1, to: 6 - livesLost, by: -1) {
                 allHearts[index] = emptyHeart
             }
-            print("Hearts: \(allHearts)")
         }
     }
     
