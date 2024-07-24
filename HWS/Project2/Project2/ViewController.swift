@@ -82,7 +82,9 @@ class ViewController: UIViewController {
             if score > defaults.integer(forKey: "TopScore") {
                 topScoreMsg = ". This is the new high score!"
                 defaults.set(score, forKey: "TopScore")
-            } else { topScoreMsg = "" }
+            } else {
+                topScoreMsg = ""
+            }
             alertMessage.0 = "Game finished! \n Your final score is \(score)" + topScoreMsg
             alertMessage.1 = "Play again"
             score = 0
