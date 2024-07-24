@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     var answerCount = 0
     
     let defaults = UserDefaults.standard
+    private let topScoreKey = "TopScore"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,9 +80,9 @@ class ViewController: UIViewController {
             alertMessage.1 = "Continue"
         } else {
             let topScoreMsg: String
-            if score > defaults.integer(forKey: "TopScore") {
+            if score > defaults.integer(forKey: topScoreKey) {
                 topScoreMsg = ". This is the new high score!"
-                defaults.set(score, forKey: "TopScore")
+                defaults.set(score, forKey: topScoreKey)
             } else {
                 topScoreMsg = ""
             }
