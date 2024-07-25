@@ -29,7 +29,13 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         }
     }
     
-    @objc func scheduleLocal() {
+    @objc func scheduleLocal(_ sender: UIBarButtonItem?) {
+        let timeInterval: Double
+        if sender == nil {
+            timeInterval = 86400
+        } else {
+            timeInterval = 5
+        }
         registerCategories()
         
         let center = UNUserNotificationCenter.current()
@@ -46,7 +52,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         dateComponents.hour = 10
         dateComponents.minute = 30
        // let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
         
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         center.add(request)
@@ -57,7 +63,8 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         center.delegate = self
         
         let show = UNNotificationAction(identifier: "show", title: "Tell me more...", options: .foreground)
-        let category = UNNotificationCategory(identifier: "alarm", actions: [show], intentIdentifiers: [])
+        let remind = UNNotificationAction(identifier: "remind", title: "Remind me later")
+        let category = UNNotificationCategory(identifier: "alarm", actions: [show, remind], intentIdentifiers: [])
         
         center.setNotificationCategories([category])
     }
@@ -71,14 +78,21 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
             switch response.actionIdentifier {
             case UNNotificationDefaultActionIdentifier:
                 //the user swiped to unlock
-                print("Default identifier")
+                showIdentifierAlert(title: "Default identifier")
             case "show":
-                print("Show more information...")
+                showIdentifierAlert(title: "Show identifier")
+            case "remind":
+                scheduleLocal(nil)
             default:
                 break
             }
         }
         completionHandler()
     }
+    
+    func showIdentifierAlert(title: String) {
+        let ac = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+    }
 }
-
