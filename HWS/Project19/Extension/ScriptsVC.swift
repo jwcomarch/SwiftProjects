@@ -7,23 +7,46 @@
 
 import UIKit
 
-class ScriptsVC: UIViewController {
+class ScriptsVC: UITableViewController {
+    var userScripts = [Script]()
+    let defaults = UserDefaults.standard
+    var pageURL = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        load()
+        print("User script title: \(userScripts[0].title)")
+        tableView.reloadData()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func load() {
+        let defaults = UserDefaults.standard
+        let jsonDecoder = JSONDecoder()
+        
+        if let savedData = defaults.object(forKey: pageURL) as? Data {
+            do {
+                userScripts = try jsonDecoder.decode([Script].self, from: savedData)
+            } catch {
+                print("Failed to load user scripts.")
+            }
+        }
     }
-    */
-
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return userScripts.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Script", for: indexPath)
+        cell.textLabel?.text = userScripts[indexPath.row].title
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let rootVC = navigationController?.viewControllers.first as? ActionViewController {
+            rootVC.script.text = userScripts[indexPath.row].js
+        }
+        navigationController?.popToRootViewController(animated: true)
+    }
 }
