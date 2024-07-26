@@ -44,6 +44,7 @@ class ViewController: UITableViewController {
             self?.saveNotes()
         }
         ac.addAction(submitAction)
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
     }
     
