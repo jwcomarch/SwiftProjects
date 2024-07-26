@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17AFB2ED2C53B0B30019C059 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AFB2EC2C53B0B30019C059 /* NoteCell.swift */; };
 		17E47B4D2C5278B900F7BA81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E47B4C2C5278B900F7BA81 /* AppDelegate.swift */; };
 		17E47B4F2C5278B900F7BA81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E47B4E2C5278B900F7BA81 /* SceneDelegate.swift */; };
 		17E47B512C5278B900F7BA81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E47B502C5278B900F7BA81 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		17AFB2EC2C53B0B30019C059 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		17E47B492C5278B900F7BA81 /* MilestoneProject5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MilestoneProject5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E47B4C2C5278B900F7BA81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17E47B4E2C5278B900F7BA81 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,8 +64,9 @@
 			children = (
 				17E47B4C2C5278B900F7BA81 /* AppDelegate.swift */,
 				17E47B4E2C5278B900F7BA81 /* SceneDelegate.swift */,
-				17E47B622C52803E00F7BA81 /* Note.swift */,
 				17E47B502C5278B900F7BA81 /* ViewController.swift */,
+				17E47B622C52803E00F7BA81 /* Note.swift */,
+				17AFB2EC2C53B0B30019C059 /* NoteCell.swift */,
 				17E47B602C527E7800F7BA81 /* NoteDetailsVC.swift */,
 				17E47B522C5278B900F7BA81 /* Main.storyboard */,
 				17E47B552C5278BA00F7BA81 /* Assets.xcassets */,
@@ -147,6 +150,7 @@
 				17E47B632C52803E00F7BA81 /* Note.swift in Sources */,
 				17E47B512C5278B900F7BA81 /* ViewController.swift in Sources */,
 				17E47B4D2C5278B900F7BA81 /* AppDelegate.swift in Sources */,
+				17AFB2ED2C53B0B30019C059 /* NoteCell.swift in Sources */,
 				17E47B4F2C5278B900F7BA81 /* SceneDelegate.swift in Sources */,
 				17E47B612C527E7800F7BA81 /* NoteDetailsVC.swift in Sources */,
 			);

@@ -10,14 +10,17 @@ import UIKit
 class Note: NSObject, Codable {
     var title: String
     var content: String
+    var editDate: String
     
-    init(title: String, content: String) {
+    init(title: String, content: String, editDate: String) {
         self.title = title
         self.content = content
+        self.editDate = editDate
     }
     
-    init(title: String) {
+    init(title: String, editDate: String) {
         self.title = title
         self.content = ""
+        self.editDate = editDate
     }
 }
