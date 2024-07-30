@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1705F20C2C512DFA00D222C3 /* Script.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1705F20B2C512DFA00D222C3 /* Script.swift */; };
+		1705F20E2C513D1E00D222C3 /* ScriptsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1705F20D2C513D1E00D222C3 /* ScriptsVC.swift */; };
 		178051F52C4FDCE40082C3B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178051F42C4FDCE40082C3B4 /* AppDelegate.swift */; };
 		178051F72C4FDCE40082C3B4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178051F62C4FDCE40082C3B4 /* SceneDelegate.swift */; };
 		178051F92C4FDCE40082C3B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178051F82C4FDCE40082C3B4 /* ViewController.swift */; };
@@ -46,6 +48,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1705F20B2C512DFA00D222C3 /* Script.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Script.swift; sourceTree = "<group>"; };
+		1705F20D2C513D1E00D222C3 /* ScriptsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptsVC.swift; sourceTree = "<group>"; };
 		178051F12C4FDCE40082C3B4 /* Project19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project19.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		178051F42C4FDCE40082C3B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		178051F62C4FDCE40082C3B4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 			children = (
 				178052112C4FDDF40082C3B4 /* Media.xcassets */,
 				178052132C4FDDF40082C3B4 /* ActionViewController.swift */,
+				1705F20D2C513D1E00D222C3 /* ScriptsVC.swift */,
+				1705F20B2C512DFA00D222C3 /* Script.swift */,
 				178052152C4FDDF40082C3B4 /* MainInterface.storyboard */,
 				178052182C4FDDF40082C3B4 /* Info.plist */,
 				178052202C4FE3C30082C3B4 /* Action.js */,
@@ -249,6 +255,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1705F20C2C512DFA00D222C3 /* Script.swift in Sources */,
+				1705F20E2C513D1E00D222C3 /* ScriptsVC.swift in Sources */,
 				178052142C4FDDF40082C3B4 /* ActionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
