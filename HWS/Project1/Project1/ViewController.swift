@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UITableViewController {
     var pictures = [String]()
+    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +39,10 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let name = pictures[indexPath.row]
+        let visitCount = defaults.integer(forKey: name)
         let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
-        cell.textLabel?.text = pictures[indexPath.row]
+        cell.textLabel?.text = "\(name) Visits: \(visitCount)"
         return cell
     }
     
@@ -47,6 +50,12 @@ class ViewController: UITableViewController {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             vc.titleBar = "Picture \(indexPath.row + 1) of \(pictures.count)"
             vc.selectedImage = pictures[indexPath.row]
+            let name = pictures[indexPath.row]
+            var visitCount = defaults.integer(forKey: name)
+            visitCount += 1
+            defaults.set(visitCount, forKey: name)
+            defaults.synchronize()
+            tableView.reloadRows(at: [indexPath], with: .none)
             navigationController?.pushViewController(vc, animated: true)
         }
     }
