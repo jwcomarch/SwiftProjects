@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UNUserNotificationCenterDelegate {
     
     @IBOutlet var button1: UIButton!
     @IBOutlet var button2: UIButton!
@@ -36,6 +36,9 @@ class ViewController: UIViewController {
         button3.layer.borderColor = UIColor.lightGray.cgColor
         
         askQuestion()
+        
+        registerLocal()
+        scheduleLocal()
     }
     
     @objc func showPoints(){
@@ -95,6 +98,54 @@ class ViewController: UIViewController {
         let ac = UIAlertController(title: title, message: alertMessage.0, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: alertMessage.1, style: .default, handler: askQuestion))
         present(ac, animated: true)
+    }
+    
+    @objc func registerLocal() {
+        let center = UNUserNotificationCenter.current()
+        
+        center.requestAuthorization(options: [.alert, .badge, .sound]) {granted, error in
+            if granted {
+                print("Permission granted")
+            } else {
+                print("Permission denied")
+            }
+        }
+    }
+    
+    @objc func scheduleLocal() {
+        registerCategories()
+        
+        let center = UNUserNotificationCenter.current()
+        center.removeAllPendingNotificationRequests()
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Flag App"
+        content.body = "Play at least 1 game a day to increase your flag recognition skill!"
+        content.categoryIdentifier = "alarm"
+        content.userInfo = ["customData": "fizzbuzz"]
+        content.sound = .default
+        
+        var dateComponents = DateComponents()
+        dateComponents.hour = 24
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        center.add(request)
+    }
+    
+    func registerCategories() {
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        
+        let show = UNNotificationAction(identifier: "show", title: "Open App", options: .foreground)
+        let category = UNNotificationCategory(identifier: "alarm", actions: [show], intentIdentifiers: [])
+        
+        center.setNotificationCategories([category])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
     }
 }
 
