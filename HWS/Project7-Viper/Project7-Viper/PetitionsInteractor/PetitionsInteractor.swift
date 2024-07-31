@@ -7,16 +7,39 @@
 
 import Foundation
 
-final class PetitionsInteractor: PetitionsInteractorInput {
-    weak var output: PetitionsInteractorOutput?
+//Interactor
+protocol PetitionsInteractor: AnyObject {
+    func setPetitions(with filter: String)
+    func fetchPetitions(with filter: String) -> [Petition]
+}
+
+class PetitionsInteractorImplementation: PetitionsInteractor {
+    var presenter: PetitionsPresenter?
+    var repo: PetitionsRepo?
     
-    private let repo: PetitionsRepo
+    var petitions = [Petition]()
     
-    init(repo: PetitionsRepo) {
-        self.repo = repo
+    init(presenter: PetitionsPresenter) {
+        self.presenter = presenter
+        self.repo = PetitionsRepoImplementation()
+        setPetitions(with: "")
     }
     
-    func fetchPetitionsList() {
-        <#code#>
+    func setPetitions(with filter: String) {
+        petitions = repo!.getPetitions(with: filter)
+    }
+    
+    func fetchPetitions(with filter: String) -> [Petition] {
+        if filter.isEmpty {
+            return petitions
+        }
+        
+        var filteredPetitions = [Petition]()
+        for petition in petitions {
+            if petition.title.contains(filter) || petition.body.contains(filter) {
+                filteredPetitions.append(petition)
+            }
+        }
+        return filteredPetitions
     }
 }

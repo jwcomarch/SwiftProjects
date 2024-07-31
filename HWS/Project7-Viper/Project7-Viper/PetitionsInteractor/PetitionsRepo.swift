@@ -7,16 +7,43 @@
 
 import Foundation
 
-final class PetitionsRepoImplementation: PetitionsRepo {
-    func fetchPetitions(completion: @escaping ([Petition]?, (any Error)?) -> Void) {
-        let urlString: String
-        urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
+protocol PetitionsRepo: AnyObject {
+    func getPetitions(with filter: String) -> [Petition]
+    func fetchPetitions() -> [Petition]?
+}
+
+class PetitionsRepoImplementation: PetitionsRepo {
+    
+    private let urlString: [String] = [
+        "https://www.hackingwithswift.com/samples/petitions-1.json",
+        "https://www.hackingwithswift.com/samples/petitions-2.json"
+    ]
+    
+    func getPetitions(with filter: String) -> [Petition] {
+        let petitions = fetchPetitions()!
+        if filter.isEmpty {
+            return petitions
+        }
         
-        if let url = URL(string: urlString) {
-            if let data = try? Data(contentsOf: url) {
-                guard let petitionsList = parse(json: data) else { return }
+        var filteredPetitions = [Petition]()
+        for petition in petitions {
+            if petition.title.contains(filter) || petition.body.contains(filter) {
+                filteredPetitions.append(petition)
             }
         }
+        return filteredPetitions
+    }
+    
+    func fetchPetitions() -> [Petition]? {
+        let urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
+        if let url = URL(string: urlString) {
+            if let data = try? Data(contentsOf: url) {
+                if let petitions = parse(json: data) {
+                    return petitions
+                }
+            }
+        }
+        return nil
     }
     
     func parse(json: Data) -> [Petition]? {
@@ -26,5 +53,6 @@ final class PetitionsRepoImplementation: PetitionsRepo {
             let petitions = jsonPetitions.results
             return petitions
         }
+        return nil
     }
 }

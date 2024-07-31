@@ -17,9 +17,7 @@
 		176A2C992C58CA6C006EF433 /* PetitionsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176A2C982C58CA6C006EF433 /* PetitionsEntity.swift */; };
 		176A2C9B2C58CA78006EF433 /* PetitionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176A2C9A2C58CA78006EF433 /* PetitionsPresenter.swift */; };
 		176A2C9D2C58CA89006EF433 /* PetitionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176A2C9C2C58CA89006EF433 /* PetitionsInteractor.swift */; };
-		176A2C9F2C58CAE1006EF433 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176A2C9E2C58CAE1006EF433 /* Protocols.swift */; };
 		176A2CA22C58D73A006EF433 /* PetitionsRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176A2CA12C58D73A006EF433 /* PetitionsRepo.swift */; };
-		176A2CA42C58DDF6006EF433 /* PetitionsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176A2CA32C58DDF6006EF433 /* PetitionsBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,9 +33,7 @@
 		176A2C982C58CA6C006EF433 /* PetitionsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionsEntity.swift; sourceTree = "<group>"; };
 		176A2C9A2C58CA78006EF433 /* PetitionsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionsPresenter.swift; sourceTree = "<group>"; };
 		176A2C9C2C58CA89006EF433 /* PetitionsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionsInteractor.swift; sourceTree = "<group>"; };
-		176A2C9E2C58CAE1006EF433 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		176A2CA12C58D73A006EF433 /* PetitionsRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionsRepo.swift; sourceTree = "<group>"; };
-		176A2CA32C58DDF6006EF433 /* PetitionsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionsBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,13 +66,12 @@
 		172AA5F32C57D3B600398FAD /* Project7-Viper */ = {
 			isa = PBXGroup;
 			children = (
+				176A2C942C58C889006EF433 /* PetitionsEntity */,
 				176A2CA02C58CAEE006EF433 /* Protocols */,
 				176A2C952C58C895006EF433 /* PetitionsRouter */,
-				176A2C942C58C889006EF433 /* PetitionsEntity */,
 				176A2C932C58C877006EF433 /* PetitionsPresenter */,
 				176A2C922C58C816006EF433 /* PetitionsInteractor */,
 				176A2C912C58C7FD006EF433 /* PetitionsView */,
-				176A2CA32C58DDF6006EF433 /* PetitionsBuilder.swift */,
 				172AA5F42C57D3B600398FAD /* AppDelegate.swift */,
 				172AA5F62C57D3B600398FAD /* SceneDelegate.swift */,
 				172AA5FD2C57D3B700398FAD /* Assets.xcassets */,
@@ -98,6 +93,8 @@
 		176A2C922C58C816006EF433 /* PetitionsInteractor */ = {
 			isa = PBXGroup;
 			children = (
+				176A2C962C58CA5E006EF433 /* PetitionsRouter.swift */,
+				176A2C9A2C58CA78006EF433 /* PetitionsPresenter.swift */,
 				176A2C9C2C58CA89006EF433 /* PetitionsInteractor.swift */,
 				176A2CA12C58D73A006EF433 /* PetitionsRepo.swift */,
 			);
@@ -107,7 +104,6 @@
 		176A2C932C58C877006EF433 /* PetitionsPresenter */ = {
 			isa = PBXGroup;
 			children = (
-				176A2C9A2C58CA78006EF433 /* PetitionsPresenter.swift */,
 			);
 			path = PetitionsPresenter;
 			sourceTree = "<group>";
@@ -123,7 +119,6 @@
 		176A2C952C58C895006EF433 /* PetitionsRouter */ = {
 			isa = PBXGroup;
 			children = (
-				176A2C962C58CA5E006EF433 /* PetitionsRouter.swift */,
 			);
 			path = PetitionsRouter;
 			sourceTree = "<group>";
@@ -131,7 +126,6 @@
 		176A2CA02C58CAEE006EF433 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				176A2C9E2C58CAE1006EF433 /* Protocols.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -215,8 +209,6 @@
 				172AA5F52C57D3B600398FAD /* AppDelegate.swift in Sources */,
 				176A2C9B2C58CA78006EF433 /* PetitionsPresenter.swift in Sources */,
 				172AA5F72C57D3B600398FAD /* SceneDelegate.swift in Sources */,
-				176A2C9F2C58CAE1006EF433 /* Protocols.swift in Sources */,
-				176A2CA42C58DDF6006EF433 /* PetitionsBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
