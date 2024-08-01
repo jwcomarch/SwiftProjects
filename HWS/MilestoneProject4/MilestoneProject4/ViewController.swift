@@ -14,9 +14,16 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureNavButtons()
+        loadPictures()
+    }
+    
+    func configureNavButtons() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clearTable))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPicture))
-        
+    }
+    
+    func loadPictures() {
         if let savedPictures = defaults.object(forKey: "pictures") as? Data {
              let jsonDecoder = JSONDecoder()
              do {
@@ -93,7 +100,6 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
     func save() {
         let jsonEncoder = JSONEncoder()
         if let savedData = try? jsonEncoder.encode(pictures) {
-            let defaults = UserDefaults.standard
             defaults.set(savedData, forKey: "pictures")
             print("Saved")
         } else {
