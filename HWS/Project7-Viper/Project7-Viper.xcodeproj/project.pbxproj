@@ -75,7 +75,6 @@
 			isa = PBXGroup;
 			children = (
 				176A2C942C58C889006EF433 /* PetitionsEntity */,
-				176A2CA02C58CAEE006EF433 /* Protocols */,
 				176A2C952C58C895006EF433 /* PetitionsRouter */,
 				176A2C932C58C877006EF433 /* PetitionsPresenter */,
 				176A2C922C58C816006EF433 /* PetitionsInteractor */,
@@ -102,10 +101,9 @@
 		176A2C922C58C816006EF433 /* PetitionsInteractor */ = {
 			isa = PBXGroup;
 			children = (
-				176A2C962C58CA5E006EF433 /* PetitionsRouter.swift */,
-				176A2C9A2C58CA78006EF433 /* PetitionsPresenter.swift */,
 				176A2C9C2C58CA89006EF433 /* PetitionsInteractor.swift */,
 				176A2CA12C58D73A006EF433 /* PetitionsRepo.swift */,
+				177001EA2C5B6E6200AB974D /* DetailsInteractor.swift */,
 			);
 			path = PetitionsInteractor;
 			sourceTree = "<group>";
@@ -113,9 +111,8 @@
 		176A2C932C58C877006EF433 /* PetitionsPresenter */ = {
 			isa = PBXGroup;
 			children = (
-				177001EA2C5B6E6200AB974D /* DetailsInteractor.swift */,
+				176A2C9A2C58CA78006EF433 /* PetitionsPresenter.swift */,
 				177001EC2C5B6E7400AB974D /* DetailsPresenter.swift */,
-				177001EE2C5B6E7C00AB974D /* DetailsRouter.swift */,
 			);
 			path = PetitionsPresenter;
 			sourceTree = "<group>";
@@ -131,15 +128,10 @@
 		176A2C952C58C895006EF433 /* PetitionsRouter */ = {
 			isa = PBXGroup;
 			children = (
+				176A2C962C58CA5E006EF433 /* PetitionsRouter.swift */,
+				177001EE2C5B6E7C00AB974D /* DetailsRouter.swift */,
 			);
 			path = PetitionsRouter;
-			sourceTree = "<group>";
-		};
-		176A2CA02C58CAEE006EF433 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

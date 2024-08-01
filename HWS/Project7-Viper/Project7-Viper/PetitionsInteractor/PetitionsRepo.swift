@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 protocol PetitionsRepo: AnyObject {
-    func getPetitions(with filter: String) -> [Petition]
-    func fetchPetitions() -> [Petition]?
+    //func getPetitions(from barTag: Int) -> [Petition]
+    func fetchPetitions(from barTag: Int) -> [Petition]?
 }
 
 class PetitionsRepoImplementation: PetitionsRepo {
@@ -19,24 +20,23 @@ class PetitionsRepoImplementation: PetitionsRepo {
         "https://www.hackingwithswift.com/samples/petitions-2.json"
     ]
     
-    func getPetitions(with filter: String) -> [Petition] {
-        let petitions = fetchPetitions()!
-        if filter.isEmpty {
-            return petitions
-        }
-        
-        var filteredPetitions = [Petition]()
-        for petition in petitions {
-            if petition.title.contains(filter) || petition.body.contains(filter) {
-                filteredPetitions.append(petition)
-            }
-        }
-        return filteredPetitions
-    }
+//    func getPetitions(from barTag: Int) -> [Petition] {
+//        let petitions = fetchPetitions(from: barTag)!
+//        if filter.isEmpty {
+//            return petitions
+//        }
+//        
+//        var filteredPetitions = [Petition]()
+//        for petition in petitions {
+//            if petition.title.contains(filter) || petition.body.contains(filter) {
+//                filteredPetitions.append(petition)
+//            }
+//        }
+//        return filteredPetitions
+//    }
     
-    func fetchPetitions() -> [Petition]? {
-        let urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
-        if let url = URL(string: urlString) {
+    func fetchPetitions(from barTag: Int) -> [Petition]? {
+        if let url = URL(string: urlString[barTag]) {
             if let data = try? Data(contentsOf: url) {
                 if let petitions = parse(json: data) {
                     return petitions

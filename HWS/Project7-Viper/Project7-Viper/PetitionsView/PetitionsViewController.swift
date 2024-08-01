@@ -7,20 +7,18 @@
 
 import UIKit
 
-//View
 protocol PetitionsView: AnyObject {
     func setPetitions(petitionsList: [Petition])
 }
 
 class PetitionsViewController: UITableViewController, PetitionsView {
-    
     var presenter: PetitionsPresenter?
     var petitions = [Petition]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter = PetitionsPresenterImplementation(view: self)
-        //show(petitionsList: petitions)
+        self.presenter = PetitionsPresenterImplementation(view: self, barTag: navigationController!.tabBarItem.tag)
+        print("barTag: \(self.tabBarItem.tag)")
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "doc.text.magnifyingglass"), style: .plain, target: self, action: #selector(filterResults))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Credits", style: .plain, target: self, action: #selector(showCredits))
@@ -42,7 +40,6 @@ class PetitionsViewController: UITableViewController, PetitionsView {
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] _ in
-
             self?.presenter?.setPetitions(with: "")
         }
         

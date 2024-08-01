@@ -7,9 +7,8 @@
 
 import Foundation
 
-//Interactor
 protocol PetitionsInteractor: AnyObject {
-    func setPetitions(with filter: String)
+    func setPetitions(on barTag: Int)
     func fetchPetitions(with filter: String) -> [Petition]
 }
 
@@ -19,14 +18,14 @@ class PetitionsInteractorImplementation: PetitionsInteractor {
     
     var petitions = [Petition]()
     
-    init(presenter: PetitionsPresenter) {
+    init(presenter: PetitionsPresenter, barTag: Int) {
         self.presenter = presenter
         self.repo = PetitionsRepoImplementation()
-        setPetitions(with: "")
+        setPetitions(on: barTag)
     }
     
-    func setPetitions(with filter: String) {
-        petitions = repo!.getPetitions(with: filter)
+    func setPetitions(on barTag: Int) {
+        petitions = repo!.fetchPetitions(from: barTag)!
     }
     
     func fetchPetitions(with filter: String) -> [Petition] {
