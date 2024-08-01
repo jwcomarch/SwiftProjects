@@ -11,6 +11,7 @@ import UIKit
 //Presenter
 protocol PetitionsPresenter: AnyObject {
     func setPetitions(with filter: String)
+    func showDetails(petition: Petition)
 }
 
 class PetitionsPresenterImplementation: PetitionsPresenter {
@@ -21,7 +22,7 @@ class PetitionsPresenterImplementation: PetitionsPresenter {
     
     var petitions = [Petition]()
     
-    init(view: PetitionsViewController) {
+    init(view: PetitionsView) {
         self.view = view
         self.router = PetitionsRouterImplementation()
         self.interactor = PetitionsInteractorImplementation(presenter: self)
@@ -31,5 +32,9 @@ class PetitionsPresenterImplementation: PetitionsPresenter {
     func setPetitions(with filter: String) {
         petitions = interactor!.fetchPetitions(with: filter)
         view!.setPetitions(petitionsList: petitions)
+    }
+    
+    func showDetails(petition: Petition) {
+        router?.presentDetails(parentViewController: view! as! UIViewController, petition: petition)
     }
 }

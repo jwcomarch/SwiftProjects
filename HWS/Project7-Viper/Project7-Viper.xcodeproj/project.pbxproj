@@ -18,6 +18,10 @@
 		176A2C9B2C58CA78006EF433 /* PetitionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176A2C9A2C58CA78006EF433 /* PetitionsPresenter.swift */; };
 		176A2C9D2C58CA89006EF433 /* PetitionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176A2C9C2C58CA89006EF433 /* PetitionsInteractor.swift */; };
 		176A2CA22C58D73A006EF433 /* PetitionsRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176A2CA12C58D73A006EF433 /* PetitionsRepo.swift */; };
+		177001E92C5B6DA400AB974D /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177001E82C5B6DA400AB974D /* DetailsVC.swift */; };
+		177001EB2C5B6E6200AB974D /* DetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177001EA2C5B6E6200AB974D /* DetailsInteractor.swift */; };
+		177001ED2C5B6E7400AB974D /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177001EC2C5B6E7400AB974D /* DetailsPresenter.swift */; };
+		177001EF2C5B6E7C00AB974D /* DetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177001EE2C5B6E7C00AB974D /* DetailsRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		176A2C9A2C58CA78006EF433 /* PetitionsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionsPresenter.swift; sourceTree = "<group>"; };
 		176A2C9C2C58CA89006EF433 /* PetitionsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionsInteractor.swift; sourceTree = "<group>"; };
 		176A2CA12C58D73A006EF433 /* PetitionsRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionsRepo.swift; sourceTree = "<group>"; };
+		177001E82C5B6DA400AB974D /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
+		177001EA2C5B6E6200AB974D /* DetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInteractor.swift; sourceTree = "<group>"; };
+		177001EC2C5B6E7400AB974D /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		177001EE2C5B6E7C00AB974D /* DetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				172AA5F82C57D3B600398FAD /* PetitionsViewController.swift */,
+				177001E82C5B6DA400AB974D /* DetailsVC.swift */,
 				172AA5FA2C57D3B600398FAD /* Main.storyboard */,
 			);
 			path = PetitionsView;
@@ -104,6 +113,9 @@
 		176A2C932C58C877006EF433 /* PetitionsPresenter */ = {
 			isa = PBXGroup;
 			children = (
+				177001EA2C5B6E6200AB974D /* DetailsInteractor.swift */,
+				177001EC2C5B6E7400AB974D /* DetailsPresenter.swift */,
+				177001EE2C5B6E7C00AB974D /* DetailsRouter.swift */,
 			);
 			path = PetitionsPresenter;
 			sourceTree = "<group>";
@@ -202,9 +214,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				176A2CA22C58D73A006EF433 /* PetitionsRepo.swift in Sources */,
+				177001EF2C5B6E7C00AB974D /* DetailsRouter.swift in Sources */,
 				176A2C9D2C58CA89006EF433 /* PetitionsInteractor.swift in Sources */,
 				176A2C972C58CA5E006EF433 /* PetitionsRouter.swift in Sources */,
 				176A2C992C58CA6C006EF433 /* PetitionsEntity.swift in Sources */,
+				177001E92C5B6DA400AB974D /* DetailsVC.swift in Sources */,
+				177001ED2C5B6E7400AB974D /* DetailsPresenter.swift in Sources */,
+				177001EB2C5B6E6200AB974D /* DetailsInteractor.swift in Sources */,
 				172AA5F92C57D3B600398FAD /* PetitionsViewController.swift in Sources */,
 				172AA5F52C57D3B600398FAD /* AppDelegate.swift in Sources */,
 				176A2C9B2C58CA78006EF433 /* PetitionsPresenter.swift in Sources */,

@@ -9,30 +9,13 @@ import UIKit
 
 //View
 protocol PetitionsView: AnyObject {
-    func setPetitions(petitionsList: [Petition]) //set 'petitions' array + tableView.reloadData()
-    //func getPetitions()
-    
-    //filter feature:
-    //VIEW passes string to presenter ->
-    //PRESENTER passes it to Interactor and modifies presenter's 'petitions' array ->
-    
+    func setPetitions(petitionsList: [Petition])
 }
 
 class PetitionsViewController: UITableViewController, PetitionsView {
     
-    //var presenter: PetitionsViewPresenter?
     var presenter: PetitionsPresenter?
     var petitions = [Petition]()
-    
-//    init(presenter: PetitionsPresenter) {
-//        self.presenter = presenter
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//    required init?(coder aDecoder: NSCoder) {
-//        //fatalError("init(coder:) has not been implemented")
-//        self.presenter = PetitionsPresenterImplementation(view: self)
-//        super.init(coder: aDecoder)
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,9 +72,7 @@ class PetitionsViewController: UITableViewController, PetitionsView {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vc = DetailVC()
-//        vc.detailItem = petitions[indexPath.row]
-//        navigationController?.pushViewController(vc, animated: true)
+        presenter?.showDetails(petition: petitions[indexPath.row])
     }
 }
 
