@@ -49,7 +49,23 @@ class PetitionsViewController: UITableViewController, PetitionsView {
     }
     
     @objc func filterResults() {
+        let ac = UIAlertController(title: "Filter results", message: nil, preferredStyle: .alert)
+        ac.addTextField()
         
+        let submitAction = UIAlertAction(title: "Search", style: .default) {
+            [weak self, weak ac] _ in
+            guard let userInput = ac?.textFields?[0].text else { return }
+            self?.presenter?.setPetitions(with: userInput)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] _ in
+
+            self?.presenter?.setPetitions(with: "")
+        }
+        
+        ac.addAction(submitAction)
+        ac.addAction(cancelAction)
+        present(ac, animated: true)
     }
     
     @objc func showCredits() {
