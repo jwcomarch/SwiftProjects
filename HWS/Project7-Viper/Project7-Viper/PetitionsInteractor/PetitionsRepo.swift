@@ -9,8 +9,7 @@ import Foundation
 import UIKit
 
 protocol PetitionsRepo: AnyObject {
-    //func getPetitions(from barTag: Int) -> [Petition]
-    func fetchPetitions(from barTag: Int) -> [Petition]?
+    func fetchPetitions(from barTag: Int, completion: @escaping ([Petition]?) -> Void)
 }
 
 class PetitionsRepoImplementation: PetitionsRepo {
@@ -20,30 +19,19 @@ class PetitionsRepoImplementation: PetitionsRepo {
         "https://www.hackingwithswift.com/samples/petitions-2.json"
     ]
     
-//    func getPetitions(from barTag: Int) -> [Petition] {
-//        let petitions = fetchPetitions(from: barTag)!
-//        if filter.isEmpty {
-//            return petitions
-//        }
-//        
-//        var filteredPetitions = [Petition]()
-//        for petition in petitions {
-//            if petition.title.contains(filter) || petition.body.contains(filter) {
-//                filteredPetitions.append(petition)
-//            }
-//        }
-//        return filteredPetitions
-//    }
-    
-    func fetchPetitions(from barTag: Int) -> [Petition]? {
-        if let url = URL(string: urlString[barTag]) {
-            if let data = try? Data(contentsOf: url) {
-                if let petitions = parse(json: data) {
-                    return petitions
+    func fetchPetitions(from barTag: Int, completion: @escaping ([Petition]?) -> Void) {
+        let urlString = urlString[barTag]
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let url = URL(string: urlString) {
+                if let data = try? Data(contentsOf: url) {
+                    if let petitions = self.parse(json: data) {
+                        completion(petitions)
+                        return
+                    }
                 }
             }
+            completion(nil)
         }
-        return nil
     }
     
     func parse(json: Data) -> [Petition]? {

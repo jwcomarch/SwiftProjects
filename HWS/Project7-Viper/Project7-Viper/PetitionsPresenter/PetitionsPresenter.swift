@@ -11,25 +11,26 @@ import UIKit
 protocol PetitionsPresenter: AnyObject {
     func setPetitions(with filter: String)
     func showDetails(petition: Petition)
+    func sendPetitions(petitions: [Petition])
 }
 
 class PetitionsPresenterImplementation: PetitionsPresenter {
+    
     var view: PetitionsView?
     var router: PetitionsRouter?
     var interactor: PetitionsInteractor?
-    
-    var petitions = [Petition]()
     
     init(view: PetitionsView, barTag: Int) {
         self.view = view
         self.router = PetitionsRouterImplementation()
         self.interactor = PetitionsInteractorImplementation(presenter: self, barTag: barTag)
-        setPetitions(with: "")
-        print("Presenter Init bartag: \(barTag)")
     }
     
     func setPetitions(with filter: String) {
-        petitions = interactor!.fetchPetitions(with: filter)
+        view!.setPetitions(petitionsList: interactor!.fetchPetitions(with: filter))
+    }
+    
+    func sendPetitions(petitions: [Petition]) {
         view!.setPetitions(petitionsList: petitions)
     }
     
