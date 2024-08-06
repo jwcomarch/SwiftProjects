@@ -15,6 +15,8 @@
 		1784A72D2C6230570036EA7F /* XDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784A72C2C6230570036EA7F /* XDismissButton.swift */; };
 		1784A72F2C6237200036EA7F /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784A72E2C6237200036EA7F /* AccountViewModel.swift */; };
 		1784A7312C6239080036EA7F /* String+isValidEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784A7302C6239080036EA7F /* String+isValidEmail.swift */; };
+		1784A7332C6251A40036EA7F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784A7322C6251A40036EA7F /* User.swift */; };
+		1784A7382C6262C60036EA7F /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784A7372C6262C60036EA7F /* EmptyState.swift */; };
 		17E683412C60FB3B00CAEB1A /* AppetizersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E683402C60FB3B00CAEB1A /* AppetizersApp.swift */; };
 		17E683432C60FB3B00CAEB1A /* AppetizerTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E683422C60FB3B00CAEB1A /* AppetizerTabView.swift */; };
 		17E683452C60FB3D00CAEB1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E683442C60FB3D00CAEB1A /* Assets.xcassets */; };
@@ -39,6 +41,8 @@
 		1784A72C2C6230570036EA7F /* XDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDismissButton.swift; sourceTree = "<group>"; };
 		1784A72E2C6237200036EA7F /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		1784A7302C6239080036EA7F /* String+isValidEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isValidEmail.swift"; sourceTree = "<group>"; };
+		1784A7322C6251A40036EA7F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1784A7372C6262C60036EA7F /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		17E6833D2C60FB3B00CAEB1A /* Appetizers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Appetizers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E683402C60FB3B00CAEB1A /* AppetizersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppetizersApp.swift; sourceTree = "<group>"; };
 		17E683422C60FB3B00CAEB1A /* AppetizerTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppetizerTabView.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				17E683562C6103B500CAEB1A /* Appetizer.swift */,
+				1784A7322C6251A40036EA7F /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 		1784A7242C621CD60036EA7F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1784A7362C6262BA0036EA7F /* Empty States */,
 				1784A7292C622FB00036EA7F /* Buttons */,
 				1784A7262C621CE70036EA7F /* Image */,
 				1784A7252C621CE20036EA7F /* Cells */,
@@ -191,6 +197,14 @@
 				1784A72C2C6230570036EA7F /* XDismissButton.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		1784A7362C6262BA0036EA7F /* Empty States */ = {
+			isa = PBXGroup;
+			children = (
+				1784A7372C6262C60036EA7F /* EmptyState.swift */,
+			);
+			path = "Empty States";
 			sourceTree = "<group>";
 		};
 		17E683342C60FB3B00CAEB1A = {
@@ -309,6 +323,7 @@
 				17E6835F2C61193000CAEB1A /* AppetizerListViewModel.swift in Sources */,
 				1784A7172C6206A60036EA7F /* Color+brandPrimaryColor.swift in Sources */,
 				17E683432C60FB3B00CAEB1A /* AppetizerTabView.swift in Sources */,
+				1784A7332C6251A40036EA7F /* User.swift in Sources */,
 				1784A72B2C622FC20036EA7F /* APButton.swift in Sources */,
 				1784A7152C6205B20036EA7F /* LoadingView.swift in Sources */,
 				17E683412C60FB3B00CAEB1A /* AppetizersApp.swift in Sources */,
@@ -320,6 +335,7 @@
 				17E683612C611AC600CAEB1A /* Alert.swift in Sources */,
 				17E683532C60FBA100CAEB1A /* OrderView.swift in Sources */,
 				17E683552C60FC4D00CAEB1A /* AccountView.swift in Sources */,
+				1784A7382C6262C60036EA7F /* EmptyState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

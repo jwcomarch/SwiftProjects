@@ -22,7 +22,7 @@ struct AppetizerListView: View {
                 }
                 .disabled(viewModel.isShowingDetail)
                 
-                .navigationTitle("Appetizzers")
+                .navigationTitle("Appetizers")
             }
             .onAppear {
                 viewModel.getAppetizers()
