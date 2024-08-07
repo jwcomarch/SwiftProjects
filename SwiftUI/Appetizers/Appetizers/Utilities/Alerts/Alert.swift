@@ -32,6 +32,10 @@ struct AlertContext {
                                             message: Text("Unable to complete your request at this time. Please check your connection."),
                                             dismissButton: .default(Text("OK")))
     
+    static let invalidRequest = AlertItem(title: Text("Network Error"),
+                                             message: Text("Unable to complete your request at this time. Please try again later."),
+                                             dismissButton: .default(Text("OK")))
+    
     //MARK: - Account Alerts
     static let formEmptyField = AlertItem(title: Text("Empty Field"),
                                             message: Text("You cannot leave any fields empty."),

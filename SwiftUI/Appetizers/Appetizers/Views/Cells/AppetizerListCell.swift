@@ -13,10 +13,18 @@ struct AppetizerListCell: View {
     
     var body: some View {
         HStack {
-            AppetizerRemoteImage(urlString: appetizer.imageURL)
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 120, height: 90)
-                .cornerRadius(8)
+//            AppetizerRemoteImage(urlString: appetizer.imageURL)
+//                .aspectRatio(contentMode: .fit)
+//                .frame(width: 120, height: 90)
+//                .cornerRadius(8)
+            
+            //AsyncImage doesn't cache!!!
+            AsyncImage(url: URL(string: appetizer.imageURL)) { image in
+                AppetizerListCellImageStyle(image: image)
+            } placeholder: {
+                AppetizerListCellImageStyle(image: Image("food-placeholder"))
+            }
+
             
             VStack(alignment: .leading, spacing: 5) {
                 Text(appetizer.name)
@@ -29,6 +37,19 @@ struct AppetizerListCell: View {
             }
             .padding(.leading)
         }
+    }
+}
+
+struct AppetizerListCellImageStyle: View {
+    
+    var image: Image
+    
+    var body: some View {
+        image
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 120, height: 90)
+            .cornerRadius(8)
     }
 }
 

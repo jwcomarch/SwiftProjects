@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		170BD9C22C63533200BE7128 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170BD9C12C63533200BE7128 /* Order.swift */; };
 		1784A7152C6205B20036EA7F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784A7142C6205B20036EA7F /* LoadingView.swift */; };
 		1784A7172C6206A60036EA7F /* Color+brandPrimaryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784A7162C6206A60036EA7F /* Color+brandPrimaryColor.swift */; };
 		1784A7192C6218EE0036EA7F /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784A7182C6218EE0036EA7F /* RemoteImage.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		170BD9C12C63533200BE7128 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		1784A7142C6205B20036EA7F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		1784A7162C6206A60036EA7F /* Color+brandPrimaryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+brandPrimaryColor.swift"; sourceTree = "<group>"; };
 		1784A7182C6218EE0036EA7F /* RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				17E683562C6103B500CAEB1A /* Appetizer.swift */,
 				1784A7322C6251A40036EA7F /* User.swift */,
+				170BD9C12C63533200BE7128 /* Order.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				17E6835D2C61109F00CAEB1A /* APError.swift in Sources */,
 				1784A72D2C6230570036EA7F /* XDismissButton.swift in Sources */,
 				17E683592C610C2500CAEB1A /* AppetizerListCell.swift in Sources */,
+				170BD9C22C63533200BE7128 /* Order.swift in Sources */,
 				1784A72F2C6237200036EA7F /* AccountViewModel.swift in Sources */,
 				17E6835F2C61193000CAEB1A /* AppetizerListViewModel.swift in Sources */,
 				1784A7172C6206A60036EA7F /* Color+brandPrimaryColor.swift in Sources */,
